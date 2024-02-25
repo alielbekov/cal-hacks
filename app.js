@@ -5,6 +5,15 @@ const port = 3000;
 // Serve static files from the "public" directory
 app.use(express.static('public'));
 
+
+app.post("/upload", (req, res)=>{
+
+  console.log("uploading file");
+
+  res.send("file uploaded");
+
+} )
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

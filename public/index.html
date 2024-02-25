@@ -2,11 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Node App</title>
+    <title>Simple Video Upload</title>
     <script src="js/script.js" defer></script>
+    <!-- Add some basic styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello from Node.js App</h1>
-    <button id="clickMe">Click Me!</button>
+    <!-- Video Upload Form -->
+    <div class="container">
+        <h2>Upload a Video</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="video" accept="video/*">
+            <button type="submit">Upload Video</button>
+        </form>
+    </div>
+    
+
+    <script>
+        // Example JavaScript to handle the file input (client-side only)
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            console.log('Uploading', file.name);
+            // Here you would typically use fetch or XMLHttpRequest to send the file to your server
+            // This example does not include server communication
+        });
+    </script>
 </body>
 </html>
