@@ -11,6 +11,11 @@ const { API_URL, API_KEY } = process.env;
 const INDEXES_URL = `${API_URL}/indexes`;
 const TASKS_URL = `${API_URL}/tasks`;
 const GENERATE_URL = `${API_URL}/generate`;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const openai = new OpenAI({
+  apiKey: OPENAI_API_KEY,
+});
+
 
 let currentIndex = "";
 let currentTask = "";
@@ -37,6 +42,10 @@ app.post("/upload", upload.single('video'), async (req, res) => {
     res.status(400).send("No file uploaded.");
   }
 });
+app.get('/test', async (req, res) => { 
+  var response = await generateVideoDescription("65dbe15348db9fa780cb42af");
+  res.send(response);});
+
 
 async function generateVideoDescription(videoID) {
   console.log("Generating video description...");
@@ -60,8 +69,11 @@ async function generateVideoDescription(videoID) {
 
   const resp = await axios(config);
   const response = await resp.data;
-  console.log(`Status code: ${resp.status}`);
-  console.log(response);
+  console.log(response.data);
+
+  const ratingByGPT =  await analyzePetFriendliness(response.data, mustHaves);
+
+  return ratingByGPT;
 }
 
 async function generateIndex() {
@@ -154,12 +166,6 @@ app.listen(port, () => {
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// OpenAI API configuration
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-// Initialize OpenAI API
-const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
-});
 
 
 // feel to expand
@@ -192,9 +198,9 @@ async function analyzePetFriendliness(houseDescription, mustHaves) {
     });
 
     // Log the result
-    console.log(response.choices[0]);
+  
    
-    return response.choices[0];
+    return response.choices[0].message.content;
   } catch (error) {
     console.log("Error calling the OpenAI API:", error);    
     
