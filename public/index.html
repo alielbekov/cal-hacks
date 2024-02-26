@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Node App</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 
+    <title>Simple Video Upload</title>
     <script src="js/script.js" defer></script>
+    <!-- Add some basic styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div id="chat-container">
@@ -13,6 +23,43 @@
         <input type="text" id="chat-input" placeholder="Provide house description...">
         <button id="send-button">Send</button>
     </div>
-    <script src="js/script.js"></script>
+
+    <!-- Video Upload Form -->
+    <div class="container">
+        <h2>Upload a Video</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="video" accept="video/*">
+            <button type="submit">Upload Video</button>
+        </form>
+    </div>
+    
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            const fileInput = document.getElementById('fileInput');
+            const promptInput = document.getElementById('videoPrompt');
+            const file = fileInput.files[0];
+            console.log('Uploading', file.name);
+            formData.append('video', file);        
+            // Use fetch API to post the data to the server
+            fetch('/upload', {
+                method: 'POST',
+                body: formData, // This is your file object
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                // Handle success
+                alert('Upload successful');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
+        });
+        
+    </script>
 </body>
 </html>
