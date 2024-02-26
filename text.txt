@@ -1,0 +1,9 @@
+
+    <div class="container">
+      <form id="uploadForm" enctype="multipart/form-data">
+          <input type="file" id="fileInput" name="video" accept="video/*">
+          <button type="submit" style="position: relative;
+          top: 315px; right: 80px;">Upload Video</button>
+          <div id="status" class="status"></div>
+      </form>
+    </div>

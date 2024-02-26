@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Enhanced Video Upload with Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
-        /* Previous CSS styles remain unchanged */
+        /* Base styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
@@ -49,15 +50,56 @@
         .status {
             margin-top: 20px;
         }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+        /* Navbar styles */
+        .navbar {
+            background-color: #005A9C;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .navbar img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Additional styling for aesthetics */
+        .title {
+            text-align: center;
+            color: #005A9C;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Video Upload Form -->
+    <!-- Dummy Navbar -->
+    <div class="navbar">
+        <div class="logo">CatHouse.ai</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Upload</a>
+            <a href="#">About</a>
+        </nav>
+    </div>
+
     <div class="container">
-        <h2>Upload Your Video</h2>
+        <div class="title">
+            <img  width="200px" src="https://images.squarespace-cdn.com/content/v1/57c4aca420099e3efb1bdafd/1478708079354-7RWYM0JCXFRN5X6BNL1R/DCLogoDarkTeal.png?format=1500w" alt="Cat Image" />
+            <h2>Get Cat-friendliness feedback for your house! </h2>
+        </div>
         <form id="uploadForm" enctype="multipart/form-data">
             <input type="file" id="fileInput" name="video" accept="video/*">
             <button type="submit">Upload Video</button>
@@ -65,11 +107,11 @@
         </form>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
         document.getElementById('uploadForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const statusDiv = document.getElementById('status');
-            // Assuming the server returns Markdown formatted text in `data`
             statusDiv.innerHTML = 'Processing...Please wait!';
             const formData = new FormData();
             const fileInput = document.getElementById('fileInput');
@@ -81,7 +123,6 @@
             })
             .then(response => response.text())
             .then(data => {
-                // Use `marked` to convert Markdown to HTML
                 statusDiv.innerHTML = data; // Display converted HTML
             })
             .catch(error => {

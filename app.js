@@ -178,7 +178,7 @@ app.listen(port, () => {
 const mustHaves = [
         "Window access",
         "Cozy corners",
-        "Pet friendly furniture",
+        "Cat friendly furniture",
         "Easy-to-clean surface",
         "Feeding stations",
         "Safety measures"
@@ -198,8 +198,8 @@ async function analyzePetFriendliness(houseDescription, mustHaves) {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo", // Or the latest available model
       messages: [{"role": "system", "content": "You are an assistant. Given a description of a house, evaluate its pet-friendliness based on the following \
-      criteria: "+ mustHaves.join(', ') + ". Is this house pet-friendly? Please explain.\
-      ONLY ACT LIKE WE SEND YOU THE VIDEO AND YOU YOURSELF GENERATED THE DESCRIPTION. and answer like 'The video shows/ it is visible from the video etc...' "},
+      criteria: "+ mustHaves.join(', ') + ". Is this house cat-friendly? Please explain.\
+      ONLY ACT LIKE WE SEND YOU THE VIDEO AND YOU YOURSELF GENERATED THE DESCRIPTION. and answer like 'The video shows/ it is visible from the video etc...' AND BE A LOT MORE DESCIRPTIVE THAN USUAL. THANKS! "},
       {"role": "user", "content": houseDescription},
       ],
     });
@@ -210,7 +210,6 @@ async function analyzePetFriendliness(houseDescription, mustHaves) {
     return response.choices[0].message.content;
   } catch (error) {
     console.log("Error calling the OpenAI API:", error);    
-    
   }
 }
 
