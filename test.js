@@ -5,6 +5,7 @@ const data = {
   "prompt": "I want you to give me a detailed description of the house/room shown in the video",
   "video_id": "6528b54a43e8c47e4eb47e80"
 }
+const index = "65dba62cabd7318d01473360";
 
 
 async function main(){
