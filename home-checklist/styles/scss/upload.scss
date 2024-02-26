@@ -1,0 +1,34 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 15.4rem;
+}.upload-tTp {
+  overflow: hidden;
+  position: relative;
+  font-size: 2rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  letter-spacing: -0.12rem;
+  align-items: center;
+  border-radius: 0.4rem;
+  width: 100%;
+  line-height: 1.2425;
+  justify-content: center;
+  height: 2.9rem;
+  display: flex;
+  font-weight: 500;
+  white-space: nowrap;
+  background-color: #95b1db;
+}

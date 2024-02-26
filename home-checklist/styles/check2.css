@@ -1,0 +1,368 @@
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+input {
+	border: none;
+}
+body {
+  width: 144rem;
+}.check2-CAz {
+  width: 100%;
+  height: 170rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #fdfffc;
+}
+.check2-CAz .ellipse-2-eog {
+  width: 97.7rem;
+  height: 97.7rem;
+  position: absolute;
+  left: 0;
+  top: 16.1rem;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(149, 177, 219, 0.75) 0%, rgba(149, 177, 219, 0.75) 100%);
+  border-radius: 48.85rem;
+}
+.check2-CAz .ellipse-3-a54 {
+  width: 97.7rem;
+  height: 97.7rem;
+  position: absolute;
+  left: 103.5rem;
+  top: 0;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(149, 177, 219, 0.75) 0%, rgba(149, 177, 219, 0.75) 100%);
+  border-radius: 48.85rem;
+}
+.check2-CAz .the-dancing-cat-AJA {
+  width: 20.7rem;
+  height: 3.8rem;
+  position: absolute;
+  left: 12.2rem;
+  top: 2.7rem;
+  display: flex;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.18rem;
+  color: #2e3038;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .component-1-LM4 {
+  width: 70.7rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 61rem;
+  top: 3.2rem;
+  display: flex;
+  column-gap: 14.9rem;
+  align-items: center;
+}
+.check2-CAz .component-1-LM4 .adoption-b26 {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.check2-CAz .component-1-LM4 .visiting-Gtv {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.check2-CAz .component-1-LM4 .volunteer-6NA {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.check2-CAz .component-1-LM4 .faq-PcA {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.check2-CAz .line-1-4iJ {
+  width: 10.2rem;
+  height: 0.3rem;
+  position: absolute;
+  left: 61rem;
+  top: 6.2rem;
+  background-color: #2e3038;
+}
+.check2-CAz .line-5-B2E {
+  width: 127.7rem;
+  height: 0.3rem;
+  position: absolute;
+  left: 10.2rem;
+  top: 63.2rem;
+  background-color: #2e3038;
+}
+.check2-CAz .line-2-ru4 {
+  width: 10.2rem;
+  height: 0.3rem;
+  position: absolute;
+  left: 83.7rem;
+  top: 6.2rem;
+  background-color: #2e3038;
+}
+.check2-CAz .line-3-Kne {
+  width: 10.2rem;
+  height: 0.3rem;
+  position: absolute;
+  left: 104.6rem;
+  top: 6.2rem;
+  background-color: #2e3038;
+}
+.check2-CAz .line-4-pzJ {
+  width: 10.2rem;
+  height: 0.3rem;
+  position: absolute;
+  left: 127.7rem;
+  top: 6.2rem;
+  background-color: #2e3038;
+}
+.check2-CAz .home-checklist-X82 {
+  width: 21rem;
+  height: 4rem;
+  position: absolute;
+  left: 12.2rem;
+  top: 12.4rem;
+  display: flex;
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.192rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .frame-1-jzn {
+  width: 19.5rem;
+  height: 1.9rem;
+  position: absolute;
+  left: 12.2rem;
+  top: 17.4rem;
+  display: flex;
+  align-items: center;
+}
+.check2-CAz .frame-1-jzn .auto-group-fswr-FCS {
+  margin-right: 0.4rem;
+  width: 1.9rem;
+  height: 100%;
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.084rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.1rem #000000;
+  box-sizing: border-box;
+  background-color: #fdfffc;
+  border-radius: 0.95rem;
+  flex-shrink: 0;
+}
+.check2-CAz .frame-1-jzn .check-if-your-home-is-suitable-NAa {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.084rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.check2-CAz .rectangle-2-nzz {
+  width: 44rem;
+  height: 31.2rem;
+  position: absolute;
+  left: 14.5rem;
+  top: 21.7rem;
+  object-fit: cover;
+  vertical-align: top;
+}
+.check2-CAz .upload-VuQ {
+  width: 15.4rem;
+  height: 2.9rem;
+  position: absolute;
+  left: 28.8rem;
+  top: 52.9rem;
+  overflow: hidden;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: rgba(0, 0, 0, 0.3199999928);
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(149, 177, 219, 0.4799999893);
+  border-radius: 0.4rem;
+}
+.check2-CAz .score--Tze {
+  width: 8.1rem;
+  height: 4rem;
+  position: absolute;
+  left: 66.1rem;
+  top: 18.3rem;
+  display: flex;
+  font-size: 3.2rem;
+  font-weight: 500;
+  line-height: 1.2425;
+  letter-spacing: -0.192rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .item-7500-eJS {
+  width: 9.4rem;
+  height: 4rem;
+  position: absolute;
+  left: 77.7rem;
+  top: 18.3rem;
+  display: flex;
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.2425;
+  letter-spacing: -0.192rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .pros--qti {
+  width: 4.1rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 71rem;
+  top: 25.6rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .cons--2TQ {
+  width: 4.6rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 102.3rem;
+  top: 25.6rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .suggestions--r54 {
+  width: 10.4rem;
+  height: 2.5rem;
+  position: absolute;
+  left: 71rem;
+  top: 41.5rem;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .rectangle-5-Hw4 {
+  width: 16.9rem;
+  height: 12.6rem;
+  position: absolute;
+  left: 75.2rem;
+  top: 28.9rem;
+  background-color: #d9d9d9;
+}
+.check2-CAz .rectangle-6-imU {
+  width: 16.9rem;
+  height: 12.6rem;
+  position: absolute;
+  left: 84.5rem;
+  top: 28.9rem;
+  background-color: #d9d9d9;
+}
+.check2-CAz .check-how-we-measured-your-score-2XG {
+  width: 24.1rem;
+  height: 2rem;
+  position: absolute;
+  left: 72.6rem;
+  top: 53.5rem;
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.2425;
+  letter-spacing: -0.096rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.check2-CAz .rectangle-7-F98 {
+  width: 0.9rem;
+  height: 0.9rem;
+  position: absolute;
+  left: 71rem;
+  top: 54rem;
+  background-color: #000000;
+}
+.check2-CAz .upload-7BL {
+  width: 26.9rem;
+  height: 2.9rem;
+  position: absolute;
+  left: 94.8rem;
+  top: 18.8rem;
+  overflow: hidden;
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2425;
+  letter-spacing: -0.12rem;
+  color: #000000;
+  font-family: Kumbh Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #95b1db;
+  border-radius: 0.4rem;
+}
