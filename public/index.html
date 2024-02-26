@@ -23,19 +23,38 @@
             <input type="file" id="fileInput" name="video" accept="video/*">
             <button type="submit">Upload Video</button>
         </form>
+        <input id="videoPrompt" type="text">
     </div>
     
 
     <script>
-        // Example JavaScript to handle the file input (client-side only)
         document.getElementById('uploadForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            const formData = new FormData();
             const fileInput = document.getElementById('fileInput');
+            const promptInput = document.getElementById('videoPrompt');
             const file = fileInput.files[0];
             console.log('Uploading', file.name);
-            // Here you would typically use fetch or XMLHttpRequest to send the file to your server
-            // This example does not include server communication
+            formData.append('video', file);
+            formData.append('prompt', promptInput.value);
+        
+            // Use fetch API to post the data to the server
+            fetch('/upload', {
+                method: 'POST',
+                body: formData, // This is your file object
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                // Handle success
+                alert('Upload successful');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle errors here
+            });
         });
+        
     </script>
 </body>
 </html>
