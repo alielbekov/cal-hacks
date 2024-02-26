@@ -6,6 +6,8 @@ import axios from 'axios';
 import fs from 'fs';
 import FormData from 'form-data';
 import multer from 'multer';
+import { marked } from 'marked'
+
 const upload = multer({ dest: 'uploads/' }); // this will save files to an 'uploads' folder
 const { API_URL, API_KEY } = process.env;
 const INDEXES_URL = `${API_URL}/indexes`;
@@ -77,8 +79,8 @@ async function generateVideoDescription(videoID) {
   console.log(response.data);
 
   const ratingByGPT =  await analyzePetFriendliness(response.data, mustHaves);
-
-  return ratingByGPT;
+  
+  return marked(ratingByGPT);
 }
 
 async function generateIndex() {
@@ -196,7 +198,8 @@ async function analyzePetFriendliness(houseDescription, mustHaves) {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo", // Or the latest available model
       messages: [{"role": "system", "content": "You are an assistant. Given a description of a house, evaluate its pet-friendliness based on the following \
-      criteria: "+ mustHaves.join(', ') + ". Is this house pet-friendly? Please explain."},
+      criteria: "+ mustHaves.join(', ') + ". Is this house pet-friendly? Please explain.\
+      ONLY ACT LIKE WE SEND YOU THE VIDEO AND YOU YOURSELF GENERATED THE DESCRIPTION. and answer like 'The video shows/ it is visible from the video etc...' "},
       {"role": "user", "content": houseDescription},
       ],
     });

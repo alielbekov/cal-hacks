@@ -82,8 +82,7 @@
             .then(response => response.text())
             .then(data => {
                 // Use `marked` to convert Markdown to HTML
-                const convertedHtml = marked(data);
-                statusDiv.innerHTML = convertedHtml; // Display converted HTML
+                statusDiv.innerHTML = data; // Display converted HTML
             })
             .catch(error => {
                 console.error('Error:', error);
