@@ -297,15 +297,16 @@ body {
   height: 2.5rem;
   position: absolute;
   left: 71rem;
-  top: 41.5rem;
+  top: 22.5rem;
   display: flex;
-  font-size: 2rem;
+  font-size: 5rem;
   font-weight: 600;
   line-height: 1.2425;
   letter-spacing: -0.12rem;
   color: #000000;
   font-family: Kumbh Sans, 'Source Sans Pro';
   white-space: nowrap;
+  
 }
 .check2-CAz .rectangle-5-Hw4 {
   width: 16.9rem;
@@ -316,12 +317,13 @@ body {
   background-color: #d9d9d9;
 }
 .check2-CAz .rectangle-6-imU {
-  width: 16.9rem;
-  height: 12.6rem;
+  min-width: 39.9rem;
+  min-height: 22.6rem;
   position: absolute;
-  left: 84.5rem;
+  left: 75.5rem;
   top: 28.9rem;
-  background-color: #d9d9d9;
+  background-color: #ffffff;
+  border-radius: 25px;
 }
 .check2-CAz .check-how-we-measured-your-score-2XG {
   width: 24.1rem;
