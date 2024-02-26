@@ -6,11 +6,18 @@ import axios from 'axios';
 import fs from 'fs';
 import FormData from 'form-data';
 import multer from 'multer';
+import { marked } from 'marked'
+
 const upload = multer({ dest: 'uploads/' }); // this will save files to an 'uploads' folder
 const { API_URL, API_KEY } = process.env;
 const INDEXES_URL = `${API_URL}/indexes`;
 const TASKS_URL = `${API_URL}/tasks`;
 const GENERATE_URL = `${API_URL}/generate`;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const openai = new OpenAI({
+  apiKey: OPENAI_API_KEY,
+});
+
 
 let currentIndex = "";
 let currentTask = "";
@@ -21,6 +28,8 @@ const port = 3000;
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
+app.use(express.json());
+
 
 app.post("/upload", upload.single('video'), async (req, res) => {
   const newIndex = await generateIndex();
@@ -29,7 +38,8 @@ app.post("/upload", upload.single('video'), async (req, res) => {
     try {
       const videoID = await uploadVideo(req.file.path, newIndex);
       const videoText = await generateVideoDescription(videoID);
-      res.send(`File output: ${videoText}`);
+      res.send(`${videoText}`);
+
     } catch (error) {
       res.status(500).send("An error occurred while processing the video.");
     }
@@ -37,6 +47,12 @@ app.post("/upload", upload.single('video'), async (req, res) => {
     res.status(400).send("No file uploaded.");
   }
 });
+
+
+app.get('/test', async (req, res) => { 
+  var response = await generateVideoDescription("65dbe15348db9fa780cb42af");
+  res.send(response);});
+
 
 async function generateVideoDescription(videoID) {
   console.log("Generating video description...");
@@ -60,8 +76,11 @@ async function generateVideoDescription(videoID) {
 
   const resp = await axios(config);
   const response = await resp.data;
-  console.log(`Status code: ${resp.status}`);
-  console.log(response);
+  console.log(response.data);
+
+  const ratingByGPT =  await analyzePetFriendliness(response.data, mustHaves);
+  
+  return marked(ratingByGPT);
 }
 
 async function generateIndex() {
@@ -138,7 +157,7 @@ async function uploadVideo(filePath, newIndex) {
         }
       }, 1000);
     });
-    console.log(uploadResp.video_id);
+
     currentVideoID = uploadResp.video_id;
     return currentVideoID;
   } catch (error) {
@@ -152,14 +171,7 @@ app.listen(port, () => {
 });
 
 // Middleware to parse JSON bodies
-app.use(express.json());
 
-// OpenAI API configuration
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-// Initialize OpenAI API
-const openai = new OpenAI({
-  apiKey: OPENAI_API_KEY,
-});
 
 
 // feel to expand
@@ -173,11 +185,11 @@ const mustHaves = [
 ]
 
 
-const houseDescription = "A charming 3-bedroom, 2-bathroom house located in a quiet neighborhood. The home features \
-  hardwood floors throughout, a spacious living room with large windows, and a modern kitchen with stainless steel \
-  appliances. The backyard is fully fenced, offering plenty of space for pets to play. Additionally, the house is \
-  situated within walking distance of a large public park with walking trails and a dog park. The property also includes \
-  a mudroom, ideal for cleaning up pets before entering the main living space."
+// const houseDescription = "A charming 3-bedroom, 2-bathroom house located in a quiet neighborhood. The home features \
+//   hardwood floors throughout, a spacious living room with large windows, and a modern kitchen with stainless steel \
+//   appliances. The backyard is fully fenced, offering plenty of space for pets to play. Additionally, the house is \
+//   situated within walking distance of a large public park with walking trails and a dog park. The property also includes \
+//   a mudroom, ideal for cleaning up pets before entering the main living space."
 
 
 async function analyzePetFriendliness(houseDescription, mustHaves) {
@@ -186,15 +198,16 @@ async function analyzePetFriendliness(houseDescription, mustHaves) {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo", // Or the latest available model
       messages: [{"role": "system", "content": "You are an assistant. Given a description of a house, evaluate its pet-friendliness based on the following \
-      criteria: "+ mustHaves.join(', ') + ". Is this house pet-friendly? Please explain."},
+      criteria: "+ mustHaves.join(', ') + ". Is this house pet-friendly? Please explain.\
+      ONLY ACT LIKE WE SEND YOU THE VIDEO AND YOU YOURSELF GENERATED THE DESCRIPTION. and answer like 'The video shows/ it is visible from the video etc...' "},
       {"role": "user", "content": houseDescription},
       ],
     });
 
     // Log the result
-    console.log(response.choices[0]);
+  
    
-    return response.choices[0];
+    return response.choices[0].message.content;
   } catch (error) {
     console.log("Error calling the OpenAI API:", error);    
     
@@ -214,7 +227,5 @@ app.post('/get-feedback', (req, res) => {
     res.end("FAIL");
   })
   
-
-
 
 });
