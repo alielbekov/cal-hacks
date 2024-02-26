@@ -26,6 +26,8 @@ const port = 3000;
 
 // Serve static files from the "public" directory
 app.use(express.static('public'));
+app.use(express.json());
+
 
 app.post("/upload", upload.single('video'), async (req, res) => {
   const newIndex = await generateIndex();
@@ -34,7 +36,8 @@ app.post("/upload", upload.single('video'), async (req, res) => {
     try {
       const videoID = await uploadVideo(req.file.path, newIndex);
       const videoText = await generateVideoDescription(videoID);
-      res.send(`File output: ${videoText}`);
+      res.send(`${videoText}`);
+
     } catch (error) {
       res.status(500).send("An error occurred while processing the video.");
     }
@@ -42,6 +45,8 @@ app.post("/upload", upload.single('video'), async (req, res) => {
     res.status(400).send("No file uploaded.");
   }
 });
+
+
 app.get('/test', async (req, res) => { 
   var response = await generateVideoDescription("65dbe15348db9fa780cb42af");
   res.send(response);});
@@ -150,7 +155,7 @@ async function uploadVideo(filePath, newIndex) {
         }
       }, 1000);
     });
-    console.log(uploadResp.video_id);
+
     currentVideoID = uploadResp.video_id;
     return currentVideoID;
   } catch (error) {
@@ -164,7 +169,6 @@ app.listen(port, () => {
 });
 
 // Middleware to parse JSON bodies
-app.use(express.json());
 
 
 
@@ -179,11 +183,11 @@ const mustHaves = [
 ]
 
 
-const houseDescription = "A charming 3-bedroom, 2-bathroom house located in a quiet neighborhood. The home features \
-  hardwood floors throughout, a spacious living room with large windows, and a modern kitchen with stainless steel \
-  appliances. The backyard is fully fenced, offering plenty of space for pets to play. Additionally, the house is \
-  situated within walking distance of a large public park with walking trails and a dog park. The property also includes \
-  a mudroom, ideal for cleaning up pets before entering the main living space."
+// const houseDescription = "A charming 3-bedroom, 2-bathroom house located in a quiet neighborhood. The home features \
+//   hardwood floors throughout, a spacious living room with large windows, and a modern kitchen with stainless steel \
+//   appliances. The backyard is fully fenced, offering plenty of space for pets to play. Additionally, the house is \
+//   situated within walking distance of a large public park with walking trails and a dog park. The property also includes \
+//   a mudroom, ideal for cleaning up pets before entering the main living space."
 
 
 async function analyzePetFriendliness(houseDescription, mustHaves) {
@@ -220,7 +224,5 @@ app.post('/get-feedback', (req, res) => {
     res.end("FAIL");
   })
   
-
-
 
 });
